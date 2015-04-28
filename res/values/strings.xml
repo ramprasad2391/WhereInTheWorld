@@ -28,5 +28,6 @@
     <string name="title_activity_web_view">WebViewActivity</string>
     <string name="app_title">WHERE IN THE WORLD??</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="APP_ID">1815512232006676</string>
 
 </resources>

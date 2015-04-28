@@ -1,5 +1,10 @@
 package com.example.whereintheworld;
 
+import java.util.Arrays;
+import java.util.List;
+
+import com.facebook.UiLifecycleHelper;
+import com.facebook.widget.LoginButton;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -15,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -29,17 +35,36 @@ public class LoginFragment extends Fragment {
 	EditText email, password;
 	String inemail;
 	Button createAccount, loginButton;
+	LoginButton fbLogin;
+	
+
+
+//	private static final String TAG = LoginFragment.class.getSimpleName();
+//
+//	private UiLifecycleHelper uiHelper;
+//	
+//	private final List<String> permissions;
 
 	public LoginFragment() {
-		// Required empty public constructor
+		//permissions = Arrays.asList("user_status");
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		//uiHelper = new UiLifecycleHelper(getActivity(), callback);
+		//uiHelper.onCreate(savedInstanceState);
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		
 		// Inflate the layout for this fragment
 		View view = inflater.inflate(R.layout.fragment_login, container, false);
-
+//		fbLogin = (LoginButton) view.findViewById(R.id.fb_login_button);
+//		//fbLogin.setFragment(this); 
+//		fbLogin.setReadPermissions(permissions);
 		return view;
 	}
 
@@ -63,6 +88,7 @@ public class LoginFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
+		
 		if (ParseUser.getCurrentUser() == null) {
 			email = (EditText) getActivity().findViewById(R.id.editTextEmail);
 			password = (EditText) getActivity().findViewById(
@@ -126,6 +152,10 @@ public class LoginFragment extends Fragment {
 
 			
 		}
+	
+
+		
+		
 	}
 
 	@Override
@@ -137,7 +167,7 @@ public class LoginFragment extends Fragment {
 	/**
 	 * This interface must be implemented by activities that contain this
 	 * fragment to allow an interaction in this fragment to be communicated to
-	 * the activity and potentially other fragments contained in that activity.
+	 * the activity and potentially other fragments contained in that activity
 	 * <p>
 	 * See the Android Training lesson <a href=
 	 * "http://developer.android.com/training/basics/fragments/communicating.html"
