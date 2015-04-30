@@ -125,8 +125,8 @@ public class LoginFragment extends Fragment {
 										getFragmentManager()
 												.beginTransaction()
 												.replace(R.id.container,
-														new ToDoFragment(),
-														"todo").commit();
+														new MenuFragment(),
+														"menu").commit();
 
 										
 									} else {
@@ -147,7 +147,7 @@ public class LoginFragment extends Fragment {
 			
 
 			getFragmentManager().beginTransaction()
-					.replace(R.id.container, new ToDoFragment(), "todo")
+					.replace(R.id.container, new MenuFragment(), "menu")
 					.commit();
 
 			

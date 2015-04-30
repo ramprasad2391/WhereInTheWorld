@@ -224,11 +224,19 @@ containing a value of this type.
         public static final int todo=0x7f02002c;
     }
     public static final class id {
-        public static final int buttonCancel=0x7f08002a;
-        public static final int buttonCreateNewAccount=0x7f080023;
-        public static final int buttonDelete=0x7f08001e;
-        public static final int buttonLogin=0x7f080022;
-        public static final int buttonSignup=0x7f080029;
+        public static final int GameSettingsLayout=0x7f08001e;
+        public static final int LinearLayoutForList=0x7f080023;
+        public static final int LinearLayoutMenu=0x7f080030;
+        public static final int buttonCancel=0x7f080038;
+        public static final int buttonCreateNewAccount=0x7f08002c;
+        public static final int buttonDelete=0x7f080027;
+        public static final int buttonHighScores=0x7f080032;
+        public static final int buttonLogin=0x7f08002b;
+        public static final int buttonMyProfile=0x7f080031;
+        public static final int buttonPlay=0x7f080034;
+        public static final int buttonReady=0x7f080026;
+        public static final int buttonSignup=0x7f080037;
+        public static final int buttonSubmitQns=0x7f080033;
         public static final int com_facebook_body_frame=0x7f080016;
         public static final int com_facebook_button_xout=0x7f080018;
         public static final int com_facebook_login_activity_progress_bar=0x7f080006;
@@ -255,19 +263,25 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment_logo_image=0x7f08001b;
         public static final int com_facebook_usersettingsfragment_profile_name=0x7f08001c;
         public static final int container=0x7f080003;
-        public static final int editTextEmail=0x7f080020;
-        public static final int editTextFirstName=0x7f080027;
-        public static final int editTextPassword=0x7f080021;
-        public static final int editTextPasswordConfirm=0x7f080028;
-        public static final int fb_login_button=0x7f080026;
-        public static final int imageView1=0x7f080025;
+        public static final int editTextEmail=0x7f080029;
+        public static final int editTextFirstName=0x7f080035;
+        public static final int editTextPassword=0x7f08002a;
+        public static final int editTextPasswordConfirm=0x7f080036;
+        public static final int fb_login_button=0x7f08002f;
+        public static final int imageView1=0x7f08002e;
         public static final int large=0x7f080000;
-        public static final int listViewItems=0x7f08002b;
+        public static final int listViewContinent=0x7f080024;
+        public static final int listViewCountry=0x7f080025;
+        public static final int listViewItems=0x7f080039;
         public static final int normal=0x7f080001;
         public static final int picker_subtitle=0x7f080013;
         public static final int small=0x7f080002;
-        public static final int textViewItemDetails=0x7f08001f;
-        public static final int textViewTitle=0x7f080024;
+        public static final int spinnerForOptions=0x7f080022;
+        public static final int textViewItemDetails=0x7f080028;
+        public static final int textViewQueryTitle=0x7f080021;
+        public static final int textViewSettingsTitle=0x7f080020;
+        public static final int textViewTitle=0x7f08002d;
+        public static final int textViewplayGameTitle=0x7f08001f;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -286,12 +300,13 @@ containing a value of this type.
         public static final int com_facebook_search_bar_layout=0x7f03000d;
         public static final int com_facebook_tooltip_bubble=0x7f03000e;
         public static final int com_facebook_usersettingsfragment=0x7f03000f;
-        public static final int fragment_item_details=0x7f030010;
-        public static final int fragment_login=0x7f030011;
-        public static final int fragment_menu=0x7f030012;
-        public static final int fragment_sign_up=0x7f030013;
-        public static final int fragment_splash_screen=0x7f030014;
-        public static final int fragment_to_do=0x7f030015;
+        public static final int fragment_game_settings=0x7f030010;
+        public static final int fragment_item_details=0x7f030011;
+        public static final int fragment_login=0x7f030012;
+        public static final int fragment_menu=0x7f030013;
+        public static final int fragment_sign_up=0x7f030014;
+        public static final int fragment_splash_screen=0x7f030015;
+        public static final int fragment_to_do=0x7f030016;
     }
     public static final class string {
         public static final int APP_ID=0x7f060035;
@@ -331,6 +346,7 @@ containing a value of this type.
         public static final int first_last_name=0x7f060021;
         public static final int hello_blank_fragment=0x7f060034;
         public static final int hello_world=0x7f06001b;
+        public static final int highScoresButtonName=0x7f060037;
         public static final int last_name=0x7f060022;
         public static final int login=0x7f060026;
         public static final int menu_add=0x7f06002f;
@@ -339,9 +355,16 @@ containing a value of this type.
         public static final int menu_view_all=0x7f06002b;
         public static final int menu_view_favories=0x7f06002c;
         public static final int menu_view_shared=0x7f06002e;
+        public static final int myProfileButtonName=0x7f060036;
         public static final int new_account=0x7f060029;
         public static final int password=0x7f060024;
+        public static final int playButtonName=0x7f060039;
+        public static final int playButtonString=0x7f06003d;
+        public static final int playGameTitle=0x7f06003a;
+        public static final int queryTitle=0x7f06003c;
+        public static final int settingsTitle=0x7f06003b;
         public static final int signup=0x7f060027;
+        public static final int submitQnsButtonName=0x7f060038;
         public static final int title_activity_apps=0x7f06002a;
         public static final int title_activity_login=0x7f06001f;
         public static final int title_activity_preview=0x7f060031;

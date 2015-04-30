@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/GameSettingsLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textViewplayGameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/playGameTitle"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textViewSettingsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewplayGameTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:text="@string/settingsTitle"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textViewQueryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textViewSettingsTitle"
+        android:text="@string/queryTitle"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+	    android:id="@+id/spinnerForOptions"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@android:drawable/btn_dropdown"
+	    android:spinnerMode="dropdown"
+	    android:layout_toRightOf="@+id/textViewQueryTitle"
+	    android:layout_below="@+id/textViewSettingsTitle" />
+    
+    
+    <LinearLayout
+        android:id="@+id/LinearLayoutForList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinnerForOptions" >
+
+        <ListView
+            android:id="@+id/listViewContinent"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#f00" >
+        </ListView>
+
+        <ListView
+            android:id="@+id/listViewCountry"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#0f0" >
+        </ListView>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonReady"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearLayoutForList"
+        android:text="@string/playButtonString" />
+
+</RelativeLayout>

@@ -1,6 +1,8 @@
 package com.example.whereintheworld;
 
+import com.example.whereintheworld.GameSettingsFragment.OnGameSettingsFragmentInteractionListener;
 import com.example.whereintheworld.LoginFragment;
+import com.example.whereintheworld.MenuFragment.OnMenuFragmentInteractionListener;
 import com.example.whereintheworld.SplashScreenFragment;
 import com.example.whereintheworld.ItemDetailsFragment.OnItemDetailsFragmentInteractionListener;
 import com.example.whereintheworld.LoginFragment.OnLoginFragmentInteractionListener;
@@ -14,7 +16,7 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends Activity implements OnLoginFragmentInteractionListener,OnSignupFragmentInteractionListener,OnToDoFragmentInteractionListener,OnItemDetailsFragmentInteractionListener {
+public class MainActivity extends Activity implements OnLoginFragmentInteractionListener,OnSignupFragmentInteractionListener,OnMenuFragmentInteractionListener,OnGameSettingsFragmentInteractionListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +39,6 @@ public class MainActivity extends Activity implements OnLoginFragmentInteraction
 		}
 	}
 
-	@Override
-	public void onItemDetailsFragmentInteraction(Uri uri) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onToDoFragmentInteraction(Uri uri) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void onSignupFragmentInteraction(String username) {
@@ -57,6 +48,18 @@ public class MainActivity extends Activity implements OnLoginFragmentInteraction
 
 	@Override
 	public void onLoginFragmentInteraction(String email) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onFragmentInteraction(Uri uri) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onGameSettingsFragmentInteraction(Uri uri) {
 		// TODO Auto-generated method stub
 		
 	}
