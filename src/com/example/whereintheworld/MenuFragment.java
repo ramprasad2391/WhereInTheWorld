@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ public class MenuFragment extends Fragment {
 	// TODO: Rename and change types of parameters
 	private String mParam1;
 	private String mParam2;
-	private Button myProfileButton, highScoresButton, submitQnsButton, playButton;
+	private Button myProfileButton, highScoresButton, submitQnsButton, playButton,logoutButton;
 
 	private OnMenuFragmentInteractionListener mListener;
 
@@ -103,6 +104,8 @@ public class MenuFragment extends Fragment {
 		highScoresButton = (Button) getActivity().findViewById(R.id.buttonHighScores);
 		submitQnsButton = (Button) getActivity().findViewById(R.id.buttonSubmitQns);
 		playButton = (Button) getActivity().findViewById(R.id.buttonPlay);
+		logoutButton = (Button) getActivity().findViewById(R.id.buttonLogOut);
+		
 		
 		
 		playButton.setOnClickListener(new View.OnClickListener() {
@@ -139,10 +142,21 @@ public class MenuFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				ParseUser.logOut();
-				getFragmentManager().beginTransaction()
-				.replace(R.id.container,new LoginFragment(),"login")
-				.commit();
+			}
+		});
+		
+		
+		logoutButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(ParseUser.getCurrentUser() != null){
+					ParseUser.logOut();
+				}				
+				LoginActivity.callFacebookLogout(getActivity());
+				Intent intent = new Intent(getActivity(), LoginActivity.class);
+				startActivity(intent);
 			}
 		});
 		
