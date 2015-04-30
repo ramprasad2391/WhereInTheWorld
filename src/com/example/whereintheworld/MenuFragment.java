@@ -1,5 +1,8 @@
 package com.example.whereintheworld;
 
+import com.parse.Parse;
+import com.parse.ParseUser;
+
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
@@ -136,7 +139,10 @@ public class MenuFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+				ParseUser.logOut();
+				getFragmentManager().beginTransaction()
+				.replace(R.id.container,new LoginFragment(),"login")
+				.commit();
 			}
 		});
 		
