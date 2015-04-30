@@ -4,6 +4,8 @@ import java.util.List;
 
 
 
+
+
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -63,6 +66,7 @@ public class GameSettingsFragment extends Fragment {
 
 	public GameSettingsFragment() {
 		// Required empty public constructor
+		this.selectedOption = null;
 		this.selectedContinent = null;
 		this.selectedCountry = null;
 	}
@@ -120,6 +124,8 @@ public class GameSettingsFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		final ListView continentListView = (ListView) getActivity().findViewById(R.id.listViewContinent);
 		final ListView countryListView = (ListView) getActivity().findViewById(R.id.listViewCountry);
+		Button readyButton = (Button) getActivity().findViewById(R.id.buttonReady);
+		
 		countryListView.setVisibility(ListView.INVISIBLE);
 		Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinnerForOptions);
 		String[] items = new String[]{"World", "Continent", "Country"};
@@ -146,6 +152,12 @@ public class GameSettingsFragment extends Fragment {
 					continentListView.setVisibility(ListView.VISIBLE);
 				}
 				
+				if(selectedOption.equals("World")){					
+					selectedContinent = null;
+					selectedCountry = null;
+				}
+				
+				
 			}
 
 			@Override
@@ -166,6 +178,27 @@ public class GameSettingsFragment extends Fragment {
 					DBQuery.populateCountryList((Context) mListener, countryListView, position);
 				}
 				
+			}
+		});
+		
+		countryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent,
+					View view, int position, long id) {
+				// TODO Auto-generated method stub
+				selectedCountry = DBQuery.countryList.get(position).getCountryName();				
+			}
+		});
+		
+		readyButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				getFragmentManager().beginTransaction()
+				.replace(R.id.container,QuizFragment.newInstance(selectedContinent, selectedCountry),"quiz")
+				.commit();
 			}
 		});
 	

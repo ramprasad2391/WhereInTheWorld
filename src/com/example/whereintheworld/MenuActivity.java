@@ -2,6 +2,7 @@ package com.example.whereintheworld;
 
 import com.example.whereintheworld.GameSettingsFragment.OnGameSettingsFragmentInteractionListener;
 import com.example.whereintheworld.MenuFragment.OnMenuFragmentInteractionListener;
+import com.example.whereintheworld.QuizFragment.OnQuizFragmentInteractionListener;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -10,7 +11,7 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MenuActivity extends Activity implements OnMenuFragmentInteractionListener,OnGameSettingsFragmentInteractionListener {
+public class MenuActivity extends Activity implements OnMenuFragmentInteractionListener,OnGameSettingsFragmentInteractionListener,OnQuizFragmentInteractionListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
