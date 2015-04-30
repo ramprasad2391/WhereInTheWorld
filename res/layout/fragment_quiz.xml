@@ -7,6 +7,7 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.MapFragment"
@@ -42,3 +43,4 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
+

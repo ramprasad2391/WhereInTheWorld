@@ -1,5 +1,6 @@
 package com.example.whereintheworld;
 
+
 import java.util.List;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -25,13 +26,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment
  * must implement the {@link QuizFragment.OnFragmentInteractionListener}
  * interface to handle interaction events. Use the
  * {@link QuizFragment#newInstance} factory method to create an instance of this
  * fragment.
- *
+
  */
 public class QuizFragment extends Fragment {
 	// TODO: Rename parameter arguments, choose names that match
@@ -42,6 +44,7 @@ public class QuizFragment extends Fragment {
 	// TODO: Rename and change types of parameters
 	private String mParam1;
 	private String mParam2;
+
 
 	private OnQuizFragmentInteractionListener mListener;
 	
@@ -64,10 +67,11 @@ public class QuizFragment extends Fragment {
     private static final LatLng AFRICA = new LatLng(4.951796, 15.453137);
     private static final LatLng SOUTHEAST_ASIA = new LatLng(20.277519, 120.840514);
 
+
 	/**
 	 * Use this factory method to create a new instance of this fragment using
 	 * the provided parameters.
-	 *
+
 	 * @param param1
 	 *            Parameter 1.
 	 * @param param2
@@ -118,6 +122,7 @@ public class QuizFragment extends Fragment {
 		super.onAttach(activity);
 		try {
 			mListener = (OnQuizFragmentInteractionListener) activity;
+
 		} catch (ClassCastException e) {
 			throw new ClassCastException(activity.toString()
 					+ " must implement OnFragmentInteractionListener");
@@ -130,11 +135,13 @@ public class QuizFragment extends Fragment {
 		mListener = null;
 	}
 	
+
 	
 
 	/* (non-Javadoc)
 	 * @see android.app.Fragment#onActivityCreated(android.os.Bundle)
 	 */
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -287,6 +294,9 @@ public class QuizFragment extends Fragment {
         }
     }
 
+
+
+
 	/**
 	 * This interface must be implemented by activities that contain this
 	 * fragment to allow an interaction in this fragment to be communicated to
@@ -296,9 +306,11 @@ public class QuizFragment extends Fragment {
 	 * "http://developer.android.com/training/basics/fragments/communicating.html"
 	 * >Communicating with Other Fragments</a> for more information.
 	 */
+
 	public interface OnQuizFragmentInteractionListener {
 		// TODO: Update argument type and name
 		public void onFragmentInteraction(Uri uri);
 	}
+
 
 }
