@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -38,6 +39,8 @@ public class GameSettingsFragment extends Fragment {
 	// TODO: Rename and change types of parameters
 	private String mParam1;
 	private String mParam2;
+	
+	Button playButton;
 
 	private OnGameSettingsFragmentInteractionListener mListener;
 
@@ -169,6 +172,17 @@ public class GameSettingsFragment extends Fragment {
 			}
 		});
 	
+		playButton = (Button) getActivity().findViewById(R.id.buttonReady);
+		playButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				getFragmentManager().beginTransaction()
+				.replace(R.id.container,new QuizFragment(),"quiz")
+				.commit();
+				
+			}
+		});
 	
 	}
 
