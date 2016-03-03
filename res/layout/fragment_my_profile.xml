@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.whereintheworld.MyProfileFragment" >
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/textViewFName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewFNameTitle"
+        android:layout_alignBottom="@+id/textViewFNameTitle"
+        android:layout_marginLeft="58dp"
+        android:layout_toRightOf="@+id/textViewFNameTitle"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textViewLNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textViewFNameTitle"
+        android:layout_below="@+id/textViewFNameTitle"
+        android:layout_marginTop="34dp"
+        android:text="@string/last_name" />
+
+    <TextView
+        android:id="@+id/textViewLName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewLNameTitle"
+        android:layout_alignBottom="@+id/textViewLNameTitle"
+        android:layout_alignLeft="@+id/textViewFName"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textViewEMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewEMailTitle"
+        android:layout_alignLeft="@+id/textViewLName"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textViewScoreTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewEMailTitle"
+        android:layout_centerVertical="true"
+        android:text="@string/score" />
+
+    <TextView
+        android:id="@+id/textViewScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewScoreTitle"
+        android:layout_alignLeft="@+id/textViewEMail"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textViewFNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/first_name" />
+
+    <TextView
+        android:id="@+id/textViewMyProfileTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textViewFName"
+        android:layout_alignLeft="@+id/textViewFNameTitle"
+        android:layout_marginBottom="19dp"
+        android:layout_marginLeft="33dp"
+        android:text="@string/MyProfilePageTitle"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textViewEMailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewLNameTitle"
+        android:layout_marginTop="31dp"
+        android:layout_toLeftOf="@+id/textViewFName"
+        android:text="@string/email" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewScoreTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="Back" />
+
+</RelativeLayout>

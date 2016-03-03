@@ -1,8 +1,11 @@
 package com.example.whereintheworld;
 
 import com.example.whereintheworld.GameSettingsFragment.OnGameSettingsFragmentInteractionListener;
+import com.example.whereintheworld.HighScoreFragment.OnHighScoreFragmentInteractionListener;
 import com.example.whereintheworld.MenuFragment.OnMenuFragmentInteractionListener;
+import com.example.whereintheworld.MyProfileFragment.OnMyProfileFragmentInteractionListener;
 import com.example.whereintheworld.QuizFragment.OnQuizFragmentInteractionListener;
+import com.example.whereintheworld.SubmitQuestionFragment.OnFragmentInteractionListener;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -11,7 +14,7 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MenuActivity extends Activity implements OnMenuFragmentInteractionListener,OnGameSettingsFragmentInteractionListener,OnQuizFragmentInteractionListener {
+public class MenuActivity extends Activity implements OnHighScoreFragmentInteractionListener, OnMyProfileFragmentInteractionListener,OnFragmentInteractionListener,OnMenuFragmentInteractionListener,OnGameSettingsFragmentInteractionListener,OnQuizFragmentInteractionListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,4 +57,33 @@ public class MenuActivity extends Activity implements OnMenuFragmentInteractionL
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void OnMyProfileFragmentInteractionListener(Uri uri) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void OnHighScoreFragmentInteractionListener(Uri uri) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onBackPressed()
+	 */
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		if(getFragmentManager().getBackStackEntryCount() > 0){
+			getFragmentManager().popBackStack();
+		}
+		else{
+			super.onBackPressed();
+		}
+		
+	}
+	
+	
 }

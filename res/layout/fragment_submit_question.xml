@@ -1,0 +1,121 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.whereintheworld.SubmitQuestionFragment" >
+
+    
+    <TextView
+        android:id="@+id/textViewQueryTitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="@string/queryTitle"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+	    android:id="@+id/spinner1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@android:drawable/btn_dropdown"
+	    android:spinnerMode="dropdown"
+	    android:layout_toRightOf="@+id/textViewQueryTitle1" />
+    
+    <TextView
+        android:id="@+id/textViewQueryTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="@string/queryTitle"
+        android:layout_below="@+id/spinner1"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+	    android:id="@+id/spinner3"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@android:drawable/btn_dropdown"
+	    android:spinnerMode="dropdown"
+	    android:layout_below="@+id/spinner2"
+	     android:layout_toRightOf="@+id/textViewQueryTitle3"/>
+    
+    <TextView
+        android:id="@+id/textViewQueryTitle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="@string/queryTitle"
+        android:layout_below="@+id/spinner2"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+	    android:id="@+id/spinner2"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@android:drawable/btn_dropdown"
+	    android:spinnerMode="dropdown"
+	    android:layout_below="@+id/spinner1"
+	     android:layout_toRightOf="@+id/textViewQueryTitle2"/>
+    
+    
+    
+    <EditText
+        android:id="@+id/newQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/spinner3"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/new_question_hint"
+        android:inputType="textMultiLine"
+        android:maxLines="5"
+        android:minLines="5" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="Submit" />
+
+    <fragment
+        android:id="@+id/map1"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_above="@+id/submitButton"
+        android:layout_below="@+id/newAnswer"
+        tools:context=".NewCountryQuestion" />
+
+    <Button
+        android:id="@+id/buttonGet"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/newAnswer"
+        android:layout_marginLeft="17dp"
+        android:layout_toRightOf="@+id/newAnswer"
+        android:text="Get" />
+
+    <Button
+        android:id="@+id/buttonValidate"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newQuestion"
+        android:layout_toRightOf="@+id/buttonGet"
+        android:text="Validate" />
+
+    <EditText
+        android:id="@+id/newAnswer"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/buttonValidate"
+        android:ems="10"
+        android:hint="@string/new_answer_hint" />
+
+</RelativeLayout>

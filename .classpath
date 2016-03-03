@@ -14,5 +14,6 @@
 			<attribute name="javadoc_location" value="file:/E:/softwares/Android%20SDK/extras/google/google_play_services/libproject/google-play-services_lib/libs/../../../docs/reference/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="libs/ParseFacebookUtils-1.8.4.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

@@ -26,8 +26,9 @@ public class SignUpActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
-		
+
 		f_name = (EditText) findViewById(R.id.editTextFirstName);
+		l_name = (EditText) findViewById(R.id.editTextLastName);
 		email = (EditText) findViewById(R.id.editTextEmail);
 		password = (EditText) findViewById(R.id.editTextPassword);
 		cpassword = (EditText) findViewById(R.id.editTextPasswordConfirm);
@@ -38,13 +39,14 @@ public class SignUpActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				final String inFirstName = f_name.getText().toString();
+				final String inLastName = l_name.getText().toString();
 				final String inemail = email.getText().toString();
 				final String inpassword = password.getText().toString();
 				String incpassword = cpassword.getText().toString();
 				
 				boolean inputValid = false;
 				
-				if(inFirstName == null || inFirstName.length() == 0)
+				if(inFirstName == null || inFirstName.length() == 0 || inLastName == null || inLastName.length() == 0)
 				{
 					inputValid = false;
 					Toast.makeText(getApplicationContext(), "Enter the name", Toast.LENGTH_SHORT).show();
@@ -86,6 +88,8 @@ public class SignUpActivity extends Activity {
 								user.setPassword(inpassword);
 								user.setEmail(inemail);
 								user.put("FirstName", inFirstName);
+								user.put("LastName", inLastName);
+								user.put("score", 0);
 								
 								user.signUpInBackground(new SignUpCallback() {
 								  public void done(ParseException e) {
@@ -95,10 +99,9 @@ public class SignUpActivity extends Activity {
 								    		  public void done(ParseUser user, ParseException e) {
 								    		    if (user != null) {
 								    		    	Toast.makeText(getApplicationContext(), "Login success... Redirecting to the apps page", Toast.LENGTH_SHORT).show();
-								    		    	
-													Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-													startActivity(intent);
-													
+								    		    	Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+								    		    	finish();								    		    	
+								    		    	startActivity(intent);
 								    		    } else {
 								    		    	Toast.makeText(getApplicationContext(), "Login Failed.. Try logging in again", Toast.LENGTH_SHORT).show();
 								    		    }
@@ -129,7 +132,9 @@ public class SignUpActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-				startActivity(intent);
+  		      finish();
+  		      startActivity(intent);
+				
 			}
 		});
 		

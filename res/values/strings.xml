@@ -9,6 +9,7 @@
     <string name="title_activity_login">Log in</string>
     <string name="title_activity_to_do">ToDoActivity</string>
     <string name="first_last_name">First Last Name</string>
+    <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -39,5 +40,14 @@
     <string name="playButtonString">Play</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_menu">MenuActivity</string>
+    <string name="buttonNext">Next</string>
+    <string name="buttonPrevious">Previous</string>
+     <string name="new_question_hint">What is the question?  Be creative, the only restriction is that the answer has to be the name of a country!</string>
+    <string name="new_answer_hint">What is the answer?</string>
+    <string name="score">Score</string>
+    <string name="MyProfilePageTitle">My Profile</string>
+    
+    <string name="HighScoresTitle">High Scores</string>
+    
 
 </resources>

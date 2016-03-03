@@ -1,10 +1,14 @@
 package com.example.whereintheworld;
 
+import java.io.Serializable;
+
+import com.google.android.gms.maps.model.LatLng;
+
 public class Country {
 	private int continentId;
 	private int countryId;
 	private String countryName;
-	
+	private LatLng latLong;
 	
 	
 	public Country(int continentId, int countryId, String countryName) {
@@ -13,6 +17,24 @@ public class Country {
 		this.countryId = countryId;
 		this.countryName = countryName;
 	}
+	
+	
+	/**
+	 * @return the latLong
+	 */
+	public LatLng getLatLong() {
+		return latLong;
+	}
+
+
+	/**
+	 * @param latLong the latLong to set
+	 */
+	public void setLatLong(LatLng latLong) {
+		this.latLong = latLong;
+	}
+
+
 	/**
 	 * @return the continentId
 	 */

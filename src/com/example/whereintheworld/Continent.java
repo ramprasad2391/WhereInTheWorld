@@ -1,15 +1,45 @@
 package com.example.whereintheworld;
 
+import java.io.Serializable;
+
+import com.google.android.gms.maps.model.LatLng;
+
 public class Continent {
 	private int continentId;
 	private String continentName;
+	private LatLng latLong;
 	
 
-	public Continent(int continentId, String continentName) {
+	
+	
+	
+	public Continent(int continentId, String continentName, LatLng latLong) {
 		super();
 		this.continentId = continentId;
 		this.continentName = continentName;
+		this.latLong = latLong;
 	}
+
+
+
+	/**
+	 * @return the latLong
+	 */
+	public LatLng getLatLong() {
+		return latLong;
+	}
+
+
+
+	/**
+	 * @param latLong the latLong to set
+	 */
+	public void setLatLong(LatLng latLong) {
+		this.latLong = latLong;
+	}
+
+
+
 	/**
 	 * @return the continentId
 	 */

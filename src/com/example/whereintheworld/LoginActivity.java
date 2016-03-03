@@ -3,6 +3,11 @@ package com.example.whereintheworld;
 import java.util.Arrays;
 import java.util.List;
 
+
+
+
+
+import com.facebook.FacebookException;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
@@ -10,9 +15,13 @@ import com.facebook.model.GraphUser;
 import com.facebook.widget.FacebookDialog;
 import com.facebook.widget.LoginButton;
 import com.facebook.widget.LoginButton.UserInfoChangedCallback;
+import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
+import com.parse.ParseFacebookUtils;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 import android.app.Activity;
 //import android.support.v4.app.Fragment;
@@ -33,6 +42,7 @@ public class LoginActivity extends Activity {
 	String inemail;
 	Button createAccount, loginButton;
 	LoginButton fbLogin;
+
 	
 	private UiLifecycleHelper uiHelper;
 	private Context mActivity = this;
@@ -42,6 +52,7 @@ public class LoginActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		uiHelper = new UiLifecycleHelper(this, callback);
 	    uiHelper.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
@@ -52,13 +63,92 @@ public class LoginActivity extends Activity {
 		
 		LoginButton authButton = (LoginButton) findViewById(R.id.fb_login_button);
 		authButton.setReadPermissions(Arrays.asList("email"));
+		/*ParseFacebookUtils.logIn(PERMISSIONS, this, new LogInCallback() {
+			  @Override
+			  public void done(ParseUser user, ParseException err) {
+			    if (user == null) {
+			      Log.d("MyApp", "Uh oh. The user cancelled the Facebook login.");
+			    } else if (user.isNew()) {
+			      Log.d("MyApp", "User signed up and logged in through Facebook!");
+			    } else {
+			      Log.d("MyApp", "User logged in through Facebook!");
+			    }
+			  }
+		});
+		*/
+		
+		
+		
 		authButton.setUserInfoChangedCallback(new UserInfoChangedCallback() {
 			@Override
-			public void onUserInfoFetched(GraphUser user) {
+			public void onUserInfoFetched(final GraphUser user) {
 				if (user != null) {
-					Log.d("fb", "Logged in...");
-					Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-					startActivity(intent);
+					Log.d("fb", "Logged in..."+user.getName() + "...." + user.getUsername() + "....." + user.getProperty("email")
+							);
+					
+					ParseQuery<ParseUser> query = ParseUser.getQuery();
+					query.whereEqualTo("username", (String) user.getProperty("email"));
+					query.findInBackground(new FindCallback<ParseUser>() {					 
+					@Override
+					public void done(List<ParseUser> users, ParseException e) {
+						// TODO Auto-generated method stub
+						if (e == null) {
+							Log.d("log", "Entering the parse loop");
+					        if((users == null) || (users != null && users.size() == 0) ){
+					        	Log.d("log", "Entering the new user loop");
+					        	ParseUser Puser = new ParseUser();
+					        	Puser.setUsername((String) user.getProperty("email"));
+					        	Puser.setPassword("");
+					        	Puser.setEmail((String) user.getProperty("email"));
+					        	Puser.put("FirstName", user.getFirstName());
+					        	Puser.put("LastName", user.getLastName());
+					        	Puser.put("score", 0);
+								
+					        	Puser.signUpInBackground(new SignUpCallback() {
+								  public void done(ParseException e) {
+								    if (e == null) {
+								    	
+								    	ParseUser.logInInBackground((String) user.getProperty("email"), "", new LogInCallback() {
+								    		  public void done(ParseUser user, ParseException e) {
+								    		    if (user != null) {
+								    		    	Toast.makeText(getApplicationContext(), "Login success... Redirecting to the apps page", Toast.LENGTH_SHORT).show();
+								    		    	Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+								    		    	finish();								    		    	
+								    		    	startActivity(intent);
+								    		    } else {
+								    		    	Toast.makeText(getApplicationContext(), "Login Failed.. Try logging in again", Toast.LENGTH_SHORT).show();
+								    		    }
+								    	
+								    		  }
+								    		});
+								    } else {
+								    	//Toast.makeText(getApplicationContext(), "Signup Failed.. Try signing up again", Toast.LENGTH_SHORT).show();
+								    	//e.printStackTrace();
+								    }
+								  }
+								});
+					        }
+					        else{
+					        	ParseUser.logInInBackground((String) user.getProperty("email"), "", new LogInCallback() {
+						    		  public void done(ParseUser user, ParseException e) {
+						    		    if (user != null) {
+						    		    	Toast.makeText(getApplicationContext(), "Login success... Redirecting to the apps page", Toast.LENGTH_SHORT).show();
+						    		    	Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+						    		    	finish();								    		    	
+						    		    	startActivity(intent);
+						    		    } else {
+						    		    	Toast.makeText(getApplicationContext(), "Login Failed.. Try logging in again", Toast.LENGTH_SHORT).show();
+						    		    }
+						    	
+						    		  }
+						    		});
+					        }
+					    } else {
+					    	Log.d("log", "Entering the existing user loop");
+					    	
+					    }
+					}
+					});
 				} else {
 					Log.d("fb", "Logged out...");
 					

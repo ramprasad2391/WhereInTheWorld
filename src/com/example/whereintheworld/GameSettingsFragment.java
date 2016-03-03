@@ -6,11 +6,13 @@ import java.util.List;
 
 
 
+
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,8 +37,12 @@ public class GameSettingsFragment extends Fragment {
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 	private String selectedOption;
-	private String selectedContinent;
-	private String selectedCountry;
+	private Continent selectedContinent;
+	private Country selectedCountry;
+	private View lastTouchedContinentView;
+	private View lastTouchedCountryView;
+	
+	public static boolean comingFromDifferentFragment = false;
 
 	// TODO: Rename and change types of parameters
 	private String mParam1;
@@ -76,6 +82,9 @@ public class GameSettingsFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		/*if(getFragmentManager().findFragmentByTag("quiz") != null){
+			getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentByTag("quiz")).commit();
+		}*/
 		if (getArguments() != null) {
 			mParam1 = getArguments().getString(ARG_PARAM1);
 			mParam2 = getArguments().getString(ARG_PARAM2);
@@ -145,12 +154,17 @@ public class GameSettingsFragment extends Fragment {
 				continentListView.setVisibility(ListView.INVISIBLE);
 				
 				if(selectedOption.equals("Continent")){
-					DBQuery.populateContinentList((Context) mListener, continentListView);
+					if(!comingFromDifferentFragment){
+						DBQuery.populateContinentList((Context) mListener, continentListView);
+					}
+					
 					continentListView.setVisibility(ListView.VISIBLE);
 				}
 				
 				if(selectedOption.equals("Country")){					
-					DBQuery.populateContinentList((Context) mListener, continentListView);
+					if(!comingFromDifferentFragment){
+						DBQuery.populateContinentList((Context) mListener, continentListView);
+					}
 					continentListView.setVisibility(ListView.VISIBLE);
 				}
 				
@@ -175,9 +189,17 @@ public class GameSettingsFragment extends Fragment {
 			public void onItemClick(AdapterView<?> parent,
 					View view, int position, long id) {
 				// TODO Auto-generated method stub
-				selectedContinent = DBQuery.continentList.get(position).getContinentName();
+				if(lastTouchedContinentView != null){
+					lastTouchedContinentView.setBackgroundColor(Color.WHITE);
+				}
+				view.setBackgroundColor(Color.RED);
+				lastTouchedContinentView = view;
+				selectedContinent = DBQuery.continentList.get(position);
 				if(selectedOption.equals("Country")){
-					DBQuery.populateCountryList((Context) mListener, countryListView, position);
+					if(!comingFromDifferentFragment){
+						DBQuery.populateCountryList((Context) mListener, countryListView, position);
+					}
+					
 				}
 				
 			}
@@ -189,7 +211,12 @@ public class GameSettingsFragment extends Fragment {
 			public void onItemClick(AdapterView<?> parent,
 					View view, int position, long id) {
 				// TODO Auto-generated method stub
-				selectedCountry = DBQuery.countryList.get(position).getCountryName();				
+				if(lastTouchedCountryView != null){
+					lastTouchedCountryView.setBackgroundColor(Color.WHITE);
+				}
+				view.setBackgroundColor(Color.RED);
+				lastTouchedCountryView = view;
+				selectedCountry = DBQuery.countryList.get(position);				
 			}
 		});
 		
@@ -198,23 +225,22 @@ public class GameSettingsFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				DBQuery.continentList.clear();
+				DBQuery.countryList.clear();
+				if(continentListView.getChildCount()>0){
+					continentListView.removeViewsInLayout(0, continentListView.getChildCount());
+				}
+				if(countryListView.getChildCount()>0){
+					countryListView.removeViewsInLayout(0, countryListView.getChildCount());
+				}
+				
 				getFragmentManager().beginTransaction()
-				.replace(R.id.container,QuizFragment.newInstance(selectedContinent, selectedCountry),"quiz")
+				.replace(R.id.container,new QuizFragment(selectedContinent, selectedCountry, selectedOption),"quiz")
 				.commit();
 			}
 		});
 	
-		playButton = (Button) getActivity().findViewById(R.id.buttonReady);
-		playButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				getFragmentManager().beginTransaction()
-				.replace(R.id.container,new QuizFragment(),"quiz")
-				.commit();
-				
-			}
-		});
+		
 	
 	}
 

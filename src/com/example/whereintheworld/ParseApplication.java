@@ -7,6 +7,7 @@ import android.app.Application;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 
 public class ParseApplication extends Application {
@@ -17,7 +18,7 @@ public class ParseApplication extends Application {
 
 		// Add your initialization code here
 		Parse.initialize(this, "KyN0frL71NYWbnDZbrUj5Hmhlo6KMP3nxm0EGM3t", "xUWYj2Iy8jlYAKZp9F2eWBOnkBocR6gv5bktuYjP");
-
+		ParseFacebookUtils.initialize("KyN0frL71NYWbnDZbrUj5Hmhlo6KMP3nxm0EGM3t");
 		//ParseUser.enableAutomaticUser();
 		ParseACL defaultACL = new ParseACL();
 
